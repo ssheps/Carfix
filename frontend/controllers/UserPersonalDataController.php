@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\User;
 use common\models\UserPersonalData;
 
 class UserPersonalDataController extends \yii\web\Controller
@@ -39,6 +40,17 @@ class UserPersonalDataController extends \yii\web\Controller
         $updatingDate = $this->getUserPersonalData(1);
         $updatingDate->name = 'Hyjyriy';
         $updatingDate->save();
+    }
+
+    public function actionGetUserRelation() {
+        $userHandler = new User();
+        $user = $userHandler->find()->where([
+            'id' => 1
+        ])->one();
+
+        return $this->render('get-user-relation', [
+            'user' => $user
+        ]);
     }
 
 }
