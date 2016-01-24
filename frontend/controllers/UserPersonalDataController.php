@@ -23,12 +23,22 @@ class UserPersonalDataController extends \yii\web\Controller
     }
 
     public function actionFind($userId) {
-        $userPersonalData = new UserPersonalData();
-        $foundedUserData = $userPersonalData->find()->userId($userId)->one();
+        $foundedUserData = $this->getUserPersonalData($userId);
 
         return $this->render('find', [
             'result' => $foundedUserData
         ]);
+    }
+
+    private function getUserPersonalData($userId) {
+        $userPersonalData = new UserPersonalData();
+        return $userPersonalData->find()->userId($userId)->one();
+    }
+
+    public function actionUpdate() {
+        $updatingDate = $this->getUserPersonalData(1);
+        $updatingDate->name = 'Hyjyriy';
+        $updatingDate->save();
     }
 
 }
