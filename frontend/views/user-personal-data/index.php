@@ -1,1 +1,1 @@
-Hello!
+<?php var_dump($result); ?>
