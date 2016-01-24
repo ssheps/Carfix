@@ -15,6 +15,14 @@ class UserPersonalDataQuery extends \yii\db\ActiveQuery
         return $this;
     }*/
 
+    public function userId($userId) {
+        $this->where([
+            'user_id' => $userId
+        ]);
+
+        return $this;
+    }
+
     /**
      * @inheritdoc
      * @return UserPersonalData[]|array

@@ -24,9 +24,7 @@ class UserPersonalDataController extends \yii\web\Controller
 
     public function actionFind($userId) {
         $userPersonalData = new UserPersonalData();
-        $foundedUserData = $userPersonalData->find()->where([
-            'user_id' => $userId
-        ])->one();
+        $foundedUserData = $userPersonalData->find()->userId($userId)->one();
 
         return $this->render('find', [
             'result' => $foundedUserData
